@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "945332698288",
+    "firebase_url": "https://daily-planner-vassuv.firebaseio.com",
+    "project_id": "daily-planner-vassuv",
+    "storage_bucket": "daily-planner-vassuv.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:945332698288:android:81bdaa1ed195b434688f75",
+        "android_client_info": {
+          "package_name": "ru.vassuv.dailyplanner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "945332698288-0kf0ib97brp0km116lab2benlrlk7vj8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKgOlHsDBIHRLbTzySlN-CaPmzWM9SCbA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "945332698288-0kf0ib97brp0km116lab2benlrlk7vj8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "945332698288-ess4d75amddskhaeh6q1d7p55kkp05rs.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "ru.vassuv.dailyplanner"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
