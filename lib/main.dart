@@ -1,21 +1,15 @@
 import 'package:dailyplanner/page/launch/LaunchPage.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart' as EasyLocalize;
-import 'AppModelWrapper.dart';
+import 'app/AppModelWrapper.dart';
 
 
 Future<void> main() async => runApp(AppModelWrapper());
 
-class MyApp extends StatefulWidget {
-  @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      key: UniqueKey(),
       locale: EasyLocalize.EasyLocalization
           .of(context)
           .locale,

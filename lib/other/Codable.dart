@@ -4,7 +4,7 @@ import 'dart:collection';
 abstract class Codable {
   final dynamic _data;
 
-  Map<String, dynamic> toJson() => _data is Map<String, dynamic> ? _data : Map<String, dynamic>();
+  Map toJson() => _data is Map ? _data : _data is LinkedHashMap ? _data : Map();
 
   const Codable(this._data);
 

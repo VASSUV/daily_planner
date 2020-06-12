@@ -1,41 +1,33 @@
 
 import 'dart:ui';
 
-import 'package:get_it/get_it.dart';
 import 'package:rxdart/rxdart.dart';
 
 import 'mixin/FirebaseMixin.dart';
 
-class AppModel with FirebaseMixin, BaseMixin, FireBaseAuthMixin {
-  static String get _name => (AppModel).toString();
+class AppModel with FirebaseMixin, BaseMixin, FireBaseAuthMixin, FirebaseSetUserDataMixin {
+  static AppModel _instance;
+  static AppModel get I => AppModel();
 
-  get appLocale => Locale("ru");
-
-  void _init() {
-    Future.sync(() async {
-//      Hive.init(path);
-//      setPreferences(await SharedPreferences.getInstance());
-      await initFirebase();
-    });
-  }
+  final appLocaleState = BehaviorSubject<Locale>();
 
   AppModel._();
 
   factory AppModel() {
-    if(!GetIt.I.isRegistered(instanceName: AppModel._name)) {
-      final appModel = AppModel._();
-      appModel._init();
-      GetIt.I.registerSingleton(appModel, instanceName: AppModel._name);
-      return appModel;
+    if(_instance == null) {
+      _instance = AppModel._();
+      _instance._init();
+      return _instance;
     }
-    return GetIt.I.call(instanceName: _name);
+    return _instance;
   }
 
-  static AppModel get I => AppModel();
-
-  final updateState = PublishSubject();
-
-  void dispose() {
-    updateState.close();
+  void _init() {
+    Future.delayed(Duration(seconds: 0), () async {
+      await initFirebase();
+    });
+    Future.delayed(Duration(seconds: 1), () {
+      _instance.appLocaleState.add(Locale("ru"));
+    });
   }
 }

@@ -1,30 +1,30 @@
+import 'package:dailyplanner/other/widget/LoaderWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 import 'AppModel.dart';
-import 'main.dart';
+import '../main.dart';
 
-class AppModelWrapper extends StatefulWidget {
-  @override
-  _AppModelWrapperState createState() => _AppModelWrapperState();
-}
 
-class _AppModelWrapperState extends State<AppModelWrapper> {
+class AppModelWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-        stream: AppModel.I.updateState.stream,
+        stream: AppModel.I.appLocaleState.stream,
         builder: (context, snapshot) {
+          Locale locale = snapshot?.data;
+
+          if(locale == null) return LoaderWidget();
+
           return EasyLocalization(
-            key: UniqueKey(),
+            key: ValueKey(locale.languageCode),
             child: MyApp(),
             path: "langs",
             saveLocale: true,
-            startLocale: AppModel.I.appLocale,
+            startLocale: locale,
             supportedLocales: [
               Locale('en'),
-              Locale('ru'),
-              Locale('ar'),
+              Locale('ru')
             ],
           );
         }
